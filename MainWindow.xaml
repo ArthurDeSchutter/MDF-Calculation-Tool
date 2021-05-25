@@ -11,6 +11,14 @@
             <ColumnDefinition Width="7*"/>
             <ColumnDefinition Width="93*"/>
         </Grid.ColumnDefinitions>
+        <TabControl Grid.Column="1">
+            <TabItem Header="TabItem">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="TabItem">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
 
     </Grid>
 </Window>
