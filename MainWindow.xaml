@@ -11,7 +11,6 @@
             <ColumnDefinition Width="7*"/>
             <ColumnDefinition Width="93*"/>
         </Grid.ColumnDefinitions>
-        <CheckBox Content="void" Grid.Column="1" HorizontalAlignment="Left" Margin="277,0,0,0" VerticalAlignment="Center" Checked="CheckBox_Checked"/>
 
     </Grid>
 </Window>
