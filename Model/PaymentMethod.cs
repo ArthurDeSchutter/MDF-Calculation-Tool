@@ -7,7 +7,7 @@ namespace MDF_Calculation_Tool
 {
     class PaymentMethod : INotifyPropertyChanged
     {
-        public PaymentMethod(string name, int fixedRate, int variableRate)
+        public PaymentMethod(string name, double fixedRate, double variableRate)
         {
             Name = name;
             FixedRate = fixedRate;
@@ -15,8 +15,8 @@ namespace MDF_Calculation_Tool
         }
 
         private string name;
-        private int fixedrate;
-        private int variablerate;
+        private double fixedrate;
+        private double variablerate;
 
         public string Name
         {
@@ -30,7 +30,7 @@ namespace MDF_Calculation_Tool
                 OnPropertyChanged("name");
             }
         }
-        public int FixedRate
+        public double FixedRate
         {
             get
             {
@@ -42,7 +42,7 @@ namespace MDF_Calculation_Tool
                 OnPropertyChanged("fixedrate");
             }
         }
-        public int VariableRate
+        public double VariableRate
         {
             get
             {
@@ -58,10 +58,7 @@ namespace MDF_Calculation_Tool
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string propertyName)
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

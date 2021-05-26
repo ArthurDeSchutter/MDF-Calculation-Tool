@@ -6,19 +6,31 @@
         xmlns:local="clr-namespace:MDF_Calculation_Tool"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="7*"/>
-            <ColumnDefinition Width="93*"/>
-        </Grid.ColumnDefinitions>
-        <TabControl Grid.Column="1">
-            <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5"/>
-            </TabItem>
-            <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5"/>
-            </TabItem>
-        </TabControl>
-
-    </Grid>
+    <TabControl>
+        <TabItem Header="Payment methods">
+            <Grid Background="#FFE5E5E5">
+                <ListView Name="Paymentmethodgrid" Grid.Row="1" Margin="4,178,12,13" ItemsSource="{Binding PaymentMethods}">
+                    <ListView.View>
+                        <GridView x:Name="grdTest">
+                            <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"  Width="50"/>
+                            <GridViewColumn Header="Fixed rate" DisplayMemberBinding="{Binding FixedRate}"  Width="80" />
+                            <GridViewColumn Header="Variable rate" DisplayMemberBinding="{Binding VariableRate}" Width="100" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <Label Content="Name&#xD;&#xA;" Grid.Row="1" HorizontalAlignment="Left" Margin="12,12,0,274" Name="label1" />
+                <Label Content="Fixed Rate&#xD;&#xA;" HorizontalAlignment="Left" Margin="12,41,0,334" Name="label2" />
+                <Label Content="Variable Rate&#xD;&#xA;" HorizontalAlignment="Left" Margin="12,72,0,303" x:Name="label2_Copy" />
+                <TextBox Height="23" HorizontalAlignment="Left" Margin="115,12,0,0" Name="txtUserId" VerticalAlignment="Top" Width="178" Text="{Binding ElementName=Paymentmethodgrid,Path=SelectedItem.Name}" />
+                <TextBox Height="23" HorizontalAlignment="Left" Margin="115,45,0,0" x:Name="txtUserId_Copy" VerticalAlignment="Top" Width="178" Text="{Binding ElementName=Paymentmethodgrid,Path=SelectedItem.FixedRate}" />
+                <TextBox Height="23" HorizontalAlignment="Left" Margin="115,76,0,0" x:Name="txtUserId_Copy1" VerticalAlignment="Top" Width="178" Text="{Binding ElementName=Paymentmethodgrid,Path=SelectedItem.VariableRate}" />
+                <Button Content="Update" Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="310,40,0,0" Name="btnUpdate"   
+                VerticalAlignment="Top" Width="141"  
+                Command="{Binding Path=UpdateCommad}"  />
+            </Grid>
+        </TabItem>
+        <TabItem Header="TabItem">
+            <Grid Background="#FFE5E5E5"/>
+        </TabItem>
+    </TabControl>
 </Window>

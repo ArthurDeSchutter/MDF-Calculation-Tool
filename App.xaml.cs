@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MDF_Calculation_Tool.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,13 @@ namespace MDF_Calculation_Tool
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            MainWindow window = new MainWindow();
+            PaymentMethodViewModel VM = new PaymentMethodViewModel();
+            window.DataContext = VM;
+            window.Show();
+        }
     }
 }
