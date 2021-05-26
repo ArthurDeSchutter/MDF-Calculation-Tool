@@ -1,4 +1,5 @@
 ﻿using MDF_Calculation_Tool.ViewModel;
+using MDF_Calculation_Tool.View;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -18,7 +19,9 @@ namespace MDF_Calculation_Tool
         {
             base.OnStartup(e);
             MainWindow window = new MainWindow();
+
             PaymentMethodViewModel VM = new PaymentMethodViewModel();
+
             window.DataContext = VM;
             window.Show();
         }

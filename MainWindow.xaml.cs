@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MDF_Calculation_Tool.View;
+using MDF_Calculation_Tool.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +27,27 @@ namespace MDF_Calculation_Tool
         {
             InitializeComponent();
         }
-        
+
+        private void open_suppliers_Click(object sender, RoutedEventArgs e)
+        {
+            SupplierPage supplierPage = new SupplierPage();
+
+            SupplierViewModel SupplierVM = new SupplierViewModel();
+
+            supplierPage.DataContext = SupplierVM;
+            supplierPage.Show();
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            PaymentMethodWindow paymentwindow = new PaymentMethodWindow();
+
+            PaymentMethodViewModel vm = new PaymentMethodViewModel();
+
+            paymentwindow.DataContext = vm;
+            paymentwindow.Show();
+
+        }
     }
 }
