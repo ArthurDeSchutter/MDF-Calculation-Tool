@@ -3,23 +3,25 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
 using System.ComponentModel;
+using Prism.Commands;
+using System.Collections.ObjectModel;
 
 namespace MDF_Calculation_Tool.ViewModel
 {
     //https://www.c-sharpcorner.com/UploadFile/raj1979/simple-mvvm-pattern-in-wpf/
-    class PaymentMethodViewModel
+    class PaymentMethodViewModel : INotifyPropertyChanged
     {
-        private IList<PaymentMethod> _paymentMethods;
+        private ObservableCollection<PaymentMethod> _paymentMethods;
 
         public PaymentMethodViewModel()
         {
-            _paymentMethods = new List<PaymentMethod>
+            _paymentMethods = new ObservableCollection<PaymentMethod>
             {
                 new PaymentMethod("bancontact",0.5,1),
                 new PaymentMethod("ideal",0.29,0),
             };
         }
-        public IList<PaymentMethod> PaymentMethods
+        public ObservableCollection<PaymentMethod> PaymentMethods
         {
             get { return _paymentMethods; }
             set { _paymentMethods = value; }
@@ -39,6 +41,22 @@ namespace MDF_Calculation_Tool.ViewModel
                 mUpdater = value;
             }
         }
+        public ICommand AddPaymentMethod
+        {
+            get { return new DelegateCommand<object>(FuncToCall, FuncToEvaluate); }
+        }
+
+        private void FuncToCall(object context)
+        {
+            _paymentMethods.Add(new PaymentMethod(name, Convert.ToDouble(FixedRate), Convert.ToDouble(VariableRate)));
+        }
+
+        private bool FuncToEvaluate(object context)
+        {
+            //this is called to evaluate whether FuncToCall can be called
+            //for example you can return true or false based on some validation logic
+            return true;
+        }
         private class Updater : ICommand
         {
             #region ICommand Members  
@@ -57,5 +75,53 @@ namespace MDF_Calculation_Tool.ViewModel
 
             #endregion
         }
+
+        private string name;
+        private double fixedrate;
+        private double variablerate;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+            set
+            {
+                name = value;
+                OnPropertyChanged("name");
+            }
+        }
+        public double FixedRate
+        {
+            get
+            {
+                return fixedrate;
+            }
+            set
+            {
+                fixedrate = value;
+                OnPropertyChanged("fixedrate");
+            }
+        }
+        public double VariableRate
+        {
+            get
+            {
+                return variablerate;
+            }
+            set
+            {
+                variablerate = value;
+                OnPropertyChanged("variablerate");
+            }
+        }
+
     }
 }

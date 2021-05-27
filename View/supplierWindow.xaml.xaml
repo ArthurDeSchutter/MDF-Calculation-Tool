@@ -13,11 +13,11 @@
             <ListView.View>
                 <GridView x:Name="suppliergrid">
                     <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"  Width="50"/>
-                    <GridViewColumn Header="Fixed rate" DisplayMemberBinding="{Binding StartDate}"  Width="80" />
-                    <GridViewColumn Header="Variable rate" DisplayMemberBinding="{Binding SupplierNumber}" Width="100" />
-                    <GridViewColumn Header="Variable rate" DisplayMemberBinding="{Binding Bank_Account_Number}" Width="100" />
-                    <GridViewColumn Header="Variable rate" DisplayMemberBinding="{Binding VariableCommision}" Width="100" />
-                    <GridViewColumn Header="Variable rate" DisplayMemberBinding="{Binding FixedCommission}" Width="100" />
+                    <GridViewColumn Header="StartDate" DisplayMemberBinding="{Binding StartDate}"  Width="80" />
+                    <GridViewColumn Header="SupplierNumber" DisplayMemberBinding="{Binding SupplierNumber}" Width="130" />
+                    <GridViewColumn Header="Bank_Account_Number" DisplayMemberBinding="{Binding Bank_Account_Number}" Width="150" />
+                    <GridViewColumn Header="VariableCommision" DisplayMemberBinding="{Binding VariableCommision}" Width="150" />
+                    <GridViewColumn Header="FixedCommission" DisplayMemberBinding="{Binding FixedCommission}" Width="150" />
                 </GridView>
             </ListView.View>
         </ListView>

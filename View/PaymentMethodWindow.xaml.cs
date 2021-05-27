@@ -21,5 +21,10 @@ namespace MDF_Calculation_Tool.View
         {
             InitializeComponent();
         }
+
+        private void UpdatePaymentMethod_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

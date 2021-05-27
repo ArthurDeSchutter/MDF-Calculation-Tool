@@ -31,7 +31,6 @@ namespace MDF_Calculation_Tool
         private void open_suppliers_Click(object sender, RoutedEventArgs e)
         {
             SupplierPage supplierPage = new SupplierPage();
-
             SupplierViewModel SupplierVM = new SupplierViewModel();
 
             supplierPage.DataContext = SupplierVM;
@@ -42,12 +41,10 @@ namespace MDF_Calculation_Tool
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             PaymentMethodWindow paymentwindow = new PaymentMethodWindow();
-
             PaymentMethodViewModel vm = new PaymentMethodViewModel();
 
             paymentwindow.DataContext = vm;
             paymentwindow.Show();
-
         }
     }
 }
