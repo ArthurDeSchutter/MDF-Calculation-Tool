@@ -19,8 +19,9 @@ namespace MDF_Calculation_Tool
         {
             base.OnStartup(e);
             MainWindow window = new MainWindow();
-
-            PaymentMethodViewModel VM = new PaymentMethodViewModel();
+            MainWindowViewModel VM = new MainWindowViewModel();
+            window.DataContext = VM;
+            window.Show();
 
             window.DataContext = VM;
             window.Show();

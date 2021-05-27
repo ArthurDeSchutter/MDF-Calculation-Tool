@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ExcelDataReader;
 using System.IO;
+using System.Data;
 
 namespace MDF_Calculation_Tool
 {
@@ -28,6 +29,7 @@ namespace MDF_Calculation_Tool
         public MainWindow()
         {
             InitializeComponent();
+
         }
 
         private void open_suppliers_Click(object sender, RoutedEventArgs e)
@@ -88,6 +90,7 @@ namespace MDF_Calculation_Tool
 
         private void parse_exce(object sender, RoutedEventArgs e)
         {
+            /*
             using (var stream = File.Open(txtFilePath.Text, FileMode.Open, FileAccess.Read))
             {
                 // Auto-detect format, supports:
@@ -109,12 +112,13 @@ namespace MDF_Calculation_Tool
 
                     // 2. Use the AsDataSet extension method
                     var result = reader.AsDataSet();
-                    System.Windows.MessageBox.Show(result.Tables[0].Rows[5][0].ToString());
 
+
+                    //System.Windows.MessageBox.Show(result.Tables[0].Rows[1][0].ToString());
                     // The result of each spreadsheet is in result.Tables
                 }
             }
-
+            */
         }
     }
 }
