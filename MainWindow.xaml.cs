@@ -90,35 +90,6 @@ namespace MDF_Calculation_Tool
 
         private void parse_exce(object sender, RoutedEventArgs e)
         {
-            /*
-            using (var stream = File.Open(txtFilePath.Text, FileMode.Open, FileAccess.Read))
-            {
-                // Auto-detect format, supports:
-                //  - Binary Excel files (2.0-2003 format; *.xls)
-                //  - OpenXml Excel files (2007 format; *.xlsx, *.xlsb)
-                System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
-                using (var reader = ExcelReaderFactory.CreateReader(stream))
-                {
-                    // Choose one of either 1 or 2:
-
-                    // 1. Use the reader methods
-                    do
-                    {
-                        while (reader.Read())
-                        {
-                            // reader.GetDouble(0);
-                        }
-                    } while (reader.NextResult());
-
-                    // 2. Use the AsDataSet extension method
-                    var result = reader.AsDataSet();
-
-
-                    //System.Windows.MessageBox.Show(result.Tables[0].Rows[1][0].ToString());
-                    // The result of each spreadsheet is in result.Tables
-                }
-            }
-            */
         }
     }
 }

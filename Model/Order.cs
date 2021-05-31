@@ -12,9 +12,36 @@ namespace MDF_Calculation_Tool
 
 
         private string supplier;
-        private double totalpayed;
 
-        public Order( string supplier, DateTime deliveryDate, DateTime deliveryHour, string orderNumber, string location, string product, string status, string geprint, string variant, double price, int amount, double total, int discount, int couponDiscount, string paymentMethod, string transactionType, string transactionID, string couponCode, double costSupplier, double costMDF, double profitMDF, double commisionSupplier)
+        public Order(string supplier, DateTime deliveryDate, DateTime deliveryHour, string orderNumber, string location, string product, string status, string geprint, string variant, double price, int amount, double total, double discount, int couponDiscount, double totalPayed, string paymentMethod, string transactionType, string transactionID, string couponCode, double costSupplier, double costMDF, double profitMDF, double commisionSupplier)
+        {
+            this.supplier = supplier;
+            DeliveryDate = deliveryDate;
+            DeliveryHour = deliveryHour;
+            OrderNumber = orderNumber;
+            Location = location;
+            Product = product;
+            Status = status;
+            Geprint = geprint;
+            Variant = variant;
+            Price = price;
+            this.amount = amount;
+            Total = total;
+            Discount = discount;
+            CouponDiscount = couponDiscount;
+            PaymentMethod = paymentMethod;
+            TransactionType = transactionType;
+            TransactionID = transactionID;
+            CouponCode = couponCode;
+            CostSupplier = costSupplier;
+            CostMDF = costMDF;
+            ProfitMDF = profitMDF;
+            CommisionSupplier = commisionSupplier;
+            TotalPayed = totalPayed;
+
+        }
+
+        public Order(string supplier, DateTime deliveryDate, DateTime deliveryHour, string orderNumber, string location, string product, string status, string geprint, string variant, double price, int amount, double total, double discount, int couponDiscount, double totalpayed, double totalPayed, string paymentMethod, string transactionType, string transactionID, string couponCode, double costSupplier, double costMDF, double profitMDF, double commisionSupplier)
         {
             Supplier = supplier;
             DeliveryDate = deliveryDate;
@@ -30,6 +57,7 @@ namespace MDF_Calculation_Tool
             Total = total;
             Discount = discount;
             CouponDiscount = couponDiscount;
+            TotalPayed = totalPayed;
             PaymentMethod = paymentMethod;
             TransactionType = transactionType;
             TransactionID = transactionID;
@@ -63,20 +91,9 @@ namespace MDF_Calculation_Tool
         public double Price { get; set; }
         public int amount { get; set; }
         public double Total { get; set; }
-        public int Discount { get; set; }
+        public double Discount { get; set; }
         public int CouponDiscount { get; set; }
-        public double TotalPayed
-        {
-            get
-            {
-                return totalpayed;
-            }
-            set
-            {
-                totalpayed = Price * amount - Discount;
-                OnPropertyChanged("supplier");
-            }
-        }
+        public double TotalPayed { get; set; }
         public string PaymentMethod { get; set; }
         public string TransactionType { get; set; }
         public string TransactionID { get; set; }

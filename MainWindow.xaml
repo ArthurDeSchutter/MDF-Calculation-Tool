@@ -22,7 +22,20 @@
         <ListView Name="OrderGrid" Margin="4,178,12,13" ItemsSource="{Binding OrderList}" Grid.ColumnSpan="1">
             <ListView.View>
                 <GridView x:Name="grdTest">
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Supplier}"  Width="150"/>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Supplier}"  Width="80"/>
+                    <GridViewColumn Header="DeliveryDate" DisplayMemberBinding="{Binding DeliveryDate}"  Width="80"/>
+                    <GridViewColumn Header="OrderNumber" DisplayMemberBinding="{Binding OrderNumber}"  Width="80"/>
+                    <GridViewColumn Header="Location" DisplayMemberBinding="{Binding Location}"  Width="80"/>
+                    <GridViewColumn Header="Product" DisplayMemberBinding="{Binding Product}"  Width="80"/>
+                    <GridViewColumn Header="Status" DisplayMemberBinding="{Binding Status}"  Width="80"/>
+                    <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Price}"  Width="50"/>
+                    <GridViewColumn Header="amount" DisplayMemberBinding="{Binding amount}"  Width="50"/>
+                    <GridViewColumn Header="Total" DisplayMemberBinding="{Binding Total}"  Width="50"/>
+                    <GridViewColumn Header="Discount" DisplayMemberBinding="{Binding Discount}"  Width="50"/>
+                    <GridViewColumn Header="TotalPayed" DisplayMemberBinding="{Binding TotalPayed}"  Width="60"/>
+                    <GridViewColumn Header="PaymentMethod" DisplayMemberBinding="{Binding PaymentMethod}"  Width="80"/>
+                    <GridViewColumn Header="TransactionType" DisplayMemberBinding="{Binding TransactionType}"  Width="80"/>
+                    <GridViewColumn Header="TransactionID" DisplayMemberBinding="{Binding TransactionID}"  Width="80"/>
                 </GridView>
             </ListView.View>
         </ListView>

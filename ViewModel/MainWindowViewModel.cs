@@ -22,10 +22,6 @@ namespace MDF_Calculation_Tool.ViewModel
         {
             _orderlist = new ObservableCollection<Order>
             {
-                new Order("test", new DateTime(), new DateTime(), "test", "test", "test", "Active",
-                                         "test", "test", 5, 0, 0, 0, 5,
-                                         "test", "test","transid", "test", 5,
-                                         3, 1, 454)
             };
         }
 
@@ -63,7 +59,7 @@ namespace MDF_Calculation_Tool.ViewModel
         {
             DataSet result = ReadExcel(PathToExcel);
 
-            for (int i = 0; i < result.Tables[0].Rows.Count; i++)
+            for (int i = 1; i < result.Tables[0].Rows.Count; i++)
             {
                 string Supplier = result.Tables[0].Rows[i][0].ToString();
                 DateTime DeliveryDate = Convert.ToDateTime(result.Tables[0].Rows[i][1].ToString());
@@ -76,12 +72,13 @@ namespace MDF_Calculation_Tool.ViewModel
                 string Variant = result.Tables[0].Rows[i][10].ToString();
                 double Price = Convert.ToDouble(result.Tables[0].Rows[i][14]);
                 int amount = Convert.ToInt32(result.Tables[0].Rows[i][15]);
-                double Total = Convert.ToDouble(result.Tables[0].Rows[i][15]);
-                int Discount = Convert.ToInt32(result.Tables[0].Rows[i][16]);
-                int CouponDiscount = Convert.ToInt32(result.Tables[0].Rows[i][17]);
-                string PaymentMethod = result.Tables[0].Rows[i][19].ToString();
-                string TransactionType = result.Tables[0].Rows[i][20].ToString();
-                string TransactionID = result.Tables[0].Rows[i][21].ToString();
+                double Total = Convert.ToDouble(result.Tables[0].Rows[i][16]);
+                double Discount = (double)getDoubleFromExcel(result.Tables[0].Rows[i][17]);
+                int CouponDiscount = (int)getIntFromExcel(result.Tables[0].Rows[i][18]);
+                double TotalPayed = Convert.ToDouble(result.Tables[0].Rows[i][19]);
+                string PaymentMethod = result.Tables[0].Rows[i][20].ToString();
+                string TransactionType = result.Tables[0].Rows[i][21].ToString(); 
+                string TransactionID = result.Tables[0].Rows[i][22].ToString();
                 string CouponCode = result.Tables[0].Rows[i][22].ToString();
                 double CostSupplier = (double)getDoubleFromExcel(result.Tables[0].Rows[i][23]);
                 double CostMDF = (double)getDoubleFromExcel(result.Tables[0].Rows[i][24]);
@@ -89,7 +86,7 @@ namespace MDF_Calculation_Tool.ViewModel
                 double CommisionSupplier = (double)getDoubleFromExcel(result.Tables[0].Rows[i][26]);
 
                 _orderlist.Add(new Order(Supplier, DeliveryDate, DeliveryHour, OrderNumber, Location, Product, Status,
-                                         Geprint, Variant, Price, amount, Total, Discount, CouponDiscount,
+                                         Geprint, Variant, Price, amount, Total, Discount, CouponDiscount, TotalPayed,
                                          PaymentMethod, TransactionType, TransactionID, CouponCode, CostSupplier,
                                          CostMDF, ProfitMDF, CommisionSupplier));
 
@@ -98,7 +95,7 @@ namespace MDF_Calculation_Tool.ViewModel
             }
             
         }
-        private bool FuncToEvaluate(object context)
+        private bool FuncToEvaluate(object value)
         {
             //this is called to evaluate whether FuncToCall can be called
             //for example you can return true or false based on some validation logic
@@ -142,6 +139,14 @@ namespace MDF_Calculation_Tool.ViewModel
             if (value == DBNull.Value) return 0;
             return Convert.ToDouble(value);
         }
+        public static int? getIntFromExcel(object value)
+        {
+            if (value == DBNull.Value) return 0;
+            return Convert.ToInt32(value);
+        }
+
+
+        #region properties
         private string supplier;
         public string Supplier
         {
@@ -155,6 +160,267 @@ namespace MDF_Calculation_Tool.ViewModel
                 OnPropertyChanged("supplier");
             }
         }
+        private DateTime deliverydate;
+        public DateTime DeliveryDate
+        {
+            get
+            {
+                return deliverydate;
+            }
+            set
+            {
+                deliverydate = value;
+                OnPropertyChanged("deliverydate");
+            }
+        }
+        private DateTime deliveryhour;
+        public DateTime DeliveryHour
+        {
+            get
+            {
+                return deliveryhour;
+            }
+            set
+            {
+                deliveryhour = value;
+                OnPropertyChanged("deliveryhour");
+            }
+        }
+        private string ordernumber;
+        public string OrderNumber
+        {
+            get
+            {
+                return ordernumber;
+            }
+            set
+            {
+                ordernumber = value;
+                OnPropertyChanged("ordernumber");
+            }
+        }
+        private string location;
+        public string Location
+        {
+            get
+            {
+                return location;
+            }
+            set
+            {
+                location = value;
+                OnPropertyChanged("location");
+            }
+        }
+        private string product;
+        public string Product
+        {
+            get
+            {
+                return product;
+            }
+            set
+            {
+                product = value;
+                OnPropertyChanged("product");
+            }
+        }
+        private string status;
+        public string Status
+        {
+            get
+            {
+                return status;
+            }
+            set
+            {
+                status = value;
+                OnPropertyChanged("status");
+            }
+        }
+        private string variant;
+        public string Variant
+        {
+            get
+            {
+                return variant;
+            }
+            set
+            {
+                variant = value;
+                OnPropertyChanged("variant");
+            }
+        }
+        private string geprint;
+        public string Geprint
+        {
+            get
+            {
+                return geprint;
+            }
+            set
+            {
+                geprint = value;
+                OnPropertyChanged("geprint");
+            }
+        }
+        private double price;
+        public double Price
+        {
+            get
+            {
+                return price;
+            }
+            set
+            {
+                price = value;
+                OnPropertyChanged("price");
+            }
+        }
+        private int amount;
+        public int Amount
+        {
+            get
+            {
+                return amount;
+            }
+            set
+            {
+                amount = value;
+                OnPropertyChanged("amount");
+            }
+        }
+        private double total;
+        public double Total
+        {
+            get
+            {
+                return total;
+            }
+            set
+            {
+                total = value;
+                OnPropertyChanged("total");
+            }
+        }
+        private int discount;
+        public int Discount
+        {
+            get
+            {
+                return discount;
+            }
+            set
+            {
+                discount = value;
+                OnPropertyChanged("discount");
+            }
+        }
+        private int coupondiscount;
+        public int CouponDiscount
+        {
+            get
+            {
+                return coupondiscount;
+            }
+            set
+            {
+                coupondiscount = value;
+                OnPropertyChanged("coupondiscount");
+            }
+        }
+        private double totalpayed;
+        public double TotalPayed
+        {
+            get
+            {
+                return totalpayed;
+            }
+            set
+            {
+                totalpayed = Price * amount - Discount;
+                OnPropertyChanged("totalpayed");
+            }
+        }
+        private string paymentmethod;
+        public string PaymentMethod
+        {
+            get
+            {
+                return paymentmethod;
+            }
+            set
+            {
+                paymentmethod = value;
+                OnPropertyChanged("paymentmethod");
+            }
+        }
+        private string transactiontype;
+        public string TransactionType
+        {
+            get
+            {
+                return transactiontype;
+            }
+            set
+            {
+                transactiontype = value;
+                OnPropertyChanged("transactiontype");
+            }
+        }
+        private double costsupplier;
+        public double CostSupplier
+        {
+            get
+            {
+                return costsupplier;
+            }
+            set
+            {
+                costsupplier = value;
+                OnPropertyChanged("costsupplier");
+            }
+        }
+        private double costmdf;
+        public double CostMDF
+        {
+            get
+            {
+                return costmdf;
+            }
+            set
+            {
+                costmdf = value;
+                OnPropertyChanged("costmdf");
+            }
+        }
+        private double profitmdf;
+        public double ProfitMDF
+        {
+            get
+            {
+                return profitmdf;
+            }
+            set
+            {
+                profitmdf = value;
+                OnPropertyChanged("profitmdf");
+            }
+        }
+        private double commisionsupplier;
+        public double CommisionSupplier
+        {
+            get
+            {
+                return commisionsupplier;
+            }
+            set
+            {
+                commisionsupplier = value;
+                OnPropertyChanged("commisionsupplier");
+            }
+        }
 
+        #endregion
     }
 }
