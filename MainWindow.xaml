@@ -10,7 +10,7 @@
         <StackPanel HorizontalAlignment="Center">
             <Border BorderBrush="Black" BorderThickness="0,0,0,5" Height="60" HorizontalAlignment="Center" Width="773">
                 <WrapPanel HorizontalAlignment="Left" VerticalAlignment="Center">
-                    <TextBox Text="{Binding PathToExcel}" Height="30" x:Name="txtFilePath" Width="524" FontSize="15" Opacity="1" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    <TextBox Text="{Binding PathToExcel, UpdateSourceTrigger=PropertyChanged}" Height="30" x:Name="txtFilePath" Width="524" FontSize="15" Opacity="1" VerticalAlignment="Center" HorizontalAlignment="Center" />
                     <Button Content="Browse Excel" x:Name="btnOpen" Width="120" FontSize="15" Height="30" FontWeight="Bold" Click="btnOpen_Click" />
                     <Button Command="{Binding PassExcelPath}" Content="parse excel" x:Name="parse" Width="120" FontSize="15" Height="30" FontWeight="Bold" Click="parse_exce" />
                 </WrapPanel>

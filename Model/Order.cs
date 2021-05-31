@@ -9,7 +9,12 @@ namespace MDF_Calculation_Tool
 
     class Order : INotifyPropertyChanged
     {
-        public Order(string supplier, DateTime deliveryDate, DateTime deliveryHour, string orderNumber, string location, string product, string comment, string status, string geprint, string variant, string type, string sauce, string extra, int price, int amount, int total, int discount, int couponDiscount, int totalPayed, string paymentMethod, string transactionType, int transactionID, string couponCode, int costSupplier, int costMDF, int profitMDF, int commisionSupplier)
+
+
+        private string supplier;
+        private double totalpayed;
+
+        public Order( string supplier, DateTime deliveryDate, DateTime deliveryHour, string orderNumber, string location, string product, string status, string geprint, string variant, double price, int amount, double total, int discount, int couponDiscount, string paymentMethod, string transactionType, string transactionID, string couponCode, double costSupplier, double costMDF, double profitMDF, double commisionSupplier)
         {
             Supplier = supplier;
             DeliveryDate = deliveryDate;
@@ -17,19 +22,14 @@ namespace MDF_Calculation_Tool
             OrderNumber = orderNumber;
             Location = location;
             Product = product;
-            Comment = comment;
             Status = status;
             Geprint = geprint;
             Variant = variant;
-            Type = type;
-            Sauce = sauce;
-            Extra = extra;
             Price = price;
             this.amount = amount;
             Total = total;
             Discount = discount;
             CouponDiscount = couponDiscount;
-            TotalPayed = totalPayed;
             PaymentMethod = paymentMethod;
             TransactionType = transactionType;
             TransactionID = transactionID;
@@ -40,7 +40,6 @@ namespace MDF_Calculation_Tool
             CommisionSupplier = commisionSupplier;
         }
 
-        private string supplier;
         public string Supplier
         {
             get
@@ -58,27 +57,34 @@ namespace MDF_Calculation_Tool
         public string OrderNumber { get; set; }
         public string Location { get; set; }
         public string Product { get; set; }
-        public string Comment { get; set; }
         public string Status { get; set; }
         public string Geprint { get; set; }
         public string Variant { get; set; }
-        public string Type { get; set; }
-        public string Sauce { get; set; }
-        public string Extra { get; set; }
-        public int Price { get; set; }
+        public double Price { get; set; }
         public int amount { get; set; }
-        public int Total { get; set; }
+        public double Total { get; set; }
         public int Discount { get; set; }
         public int CouponDiscount { get; set; }
-        public int TotalPayed { get; set; }
+        public double TotalPayed
+        {
+            get
+            {
+                return totalpayed;
+            }
+            set
+            {
+                totalpayed = Price * amount - Discount;
+                OnPropertyChanged("supplier");
+            }
+        }
         public string PaymentMethod { get; set; }
         public string TransactionType { get; set; }
-        public int TransactionID { get; set; }
+        public string TransactionID { get; set; }
         public string CouponCode { get; set; }
-        public int CostSupplier { get; set; }
-        public int CostMDF { get; set; }
-        public int ProfitMDF { get; set; }
-        public int CommisionSupplier { get; set; }
+        public double CostSupplier { get; set; }
+        public double CostMDF { get; set; }
+        public double ProfitMDF { get; set; }
+        public double CommisionSupplier { get; set; }
 
 
         #region INotifyPropertyChanged Members  
