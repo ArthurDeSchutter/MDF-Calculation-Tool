@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MDF_Calculation_Tool" xmlns:local1="clr-namespace:MDF_Calculation_Tool.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" d:DesignHeight="431.923">
     <Grid Background="#FFE5E5E5">
-        <StackPanel HorizontalAlignment="Center">
+        <StackPanel HorizontalAlignment="Stretch">
             <Border BorderBrush="Black" BorderThickness="0,0,0,5" Height="60" HorizontalAlignment="Center" Width="773">
                 <WrapPanel HorizontalAlignment="Left" VerticalAlignment="Center">
                     <TextBox Text="{Binding PathToExcel, UpdateSourceTrigger=PropertyChanged}" Height="30" x:Name="txtFilePath" Width="524" FontSize="15" Opacity="1" VerticalAlignment="Center" HorizontalAlignment="Center" />
@@ -17,8 +17,8 @@
             </Border>
         </StackPanel>
 
-        <Button x:Name="open_suppliers" Content="open_suppliers" HorizontalAlignment="Left" Margin="698,133,0,0" VerticalAlignment="Top" Click="open_suppliers_Click"/>
-        <Button Content="Open PaymentMethods" HorizontalAlignment="Left" Margin="647,91,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <Button x:Name="open_suppliers" Content="open_suppliers" HorizontalAlignment="Left" Margin="288,70,0,0" VerticalAlignment="Top" Click="open_suppliers_Click"/>
+        <Button Content="Open PaymentMethods" HorizontalAlignment="Left" Margin="119,70,0,0" VerticalAlignment="Top" Click="Button_Click"/>
         <ListView Name="OrderGrid" Margin="4,178,12,13" ItemsSource="{Binding OrderList}" Grid.ColumnSpan="1">
             <ListView.View>
                 <GridView x:Name="grdTest">
